@@ -325,6 +325,10 @@ void ST7789_DrawFilledCircle(int16_t x0, int16_t y0, int16_t r, uint16_t color);
 /* Command functions */
 void ST7789_TearEffect(uint8_t tear);
 
+/* Display control */
+void ST7789_DisplayOff(void);
+void ST7789_DisplayOn(void);
+
 /* Simple test function. */
 void ST7789_Test(void);
 void ST7789_TestColors(void);

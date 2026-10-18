@@ -1,3 +1,4 @@
+#include <stdint.h>
 #include "st7789.h"
 #include <stdbool.h>
 
@@ -210,8 +211,8 @@ void ST7789_Init(void)
 		uint8_t data[] = {0xD0, 0x04, 0x0C, 0x11, 0x13, 0x2C, 0x3F, 0x44, 0x51, 0x2F, 0x1F, 0x1F, 0x20, 0x23};
 		ST7789_WriteData(data, sizeof(data));
 	}
-    ST7789_WriteCommand (ST7789_INVON);		//	Inversion ON
-	ST7789_WriteCommand (ST7789_SLPOUT);	//	Out of sleep mode
+    ST7789_WriteCommand (ST7789_INVOFF);	//	Inversion OFF
+	  ST7789_WriteCommand (ST7789_SLPOUT);	//	Out of sleep mode
   	ST7789_WriteCommand (ST7789_NORON);		//	Normal Display on
   	ST7789_WriteCommand (ST7789_DISPON);	//	Main screen turned on	
 
@@ -700,6 +701,20 @@ void ST7789_TearEffect(uint8_t tear)
 	ST7789_UnSelect();
 }
 
+void ST7789_DisplayOff(void)
+{
+	ST7789_Select();
+	ST7789_WriteCommand(0x28); /* DISPOFF */
+	ST7789_UnSelect();
+}
+
+void ST7789_DisplayOn(void)
+{
+	ST7789_Select();
+	ST7789_WriteCommand(0x29); /* DISPON */
+	ST7789_UnSelect();
+}
+
 /** 
  * @brief A Simple test function for ST7789
  * @param  none
@@ -737,9 +752,9 @@ void ST7789_Test(void)
 	ST7789_DELAY(500);
 
 	ST7789_WriteString(10, 10, "Font test.", Font_16x26, GBLUE, WHITE);
-	ST7789_WriteString(10, 50, "Hello Steve!", Font_7x10, RED, WHITE);
-	ST7789_WriteString(10, 75, "Hello Steve!", Font_11x18, YELLOW, WHITE);
-	ST7789_WriteString(10, 100, "Hello Steve!", Font_16x26, MAGENTA, WHITE);
+	ST7789_WriteString(10, 50, "Hello Sarah!", Font_7x10, RED, WHITE);
+	ST7789_WriteString(10, 75, "Hello Sarah!", Font_11x18, YELLOW, WHITE);
+	ST7789_WriteString(10, 100, "Hello Sarah!", Font_16x26, MAGENTA, WHITE);
 	ST7789_DELAY(1000);
 
 	ST7789_Fill_Color(BLACK);
