@@ -2013,7 +2013,7 @@ const uint16_t adi1[][240] = {
 };
 */
 
-FontDef Font_8x8  = {8,8,Font8x8 };
-FontDef Font_7x10 = {7,10,Font7x10};
-FontDef Font_11x18 = {11,18,Font11x18};
-FontDef Font_16x26 = {16,26,Font16x26};
+const FontDef Font_8x8  = {8,8,Font8x8 };
+const FontDef Font_7x10 = {7,10,Font7x10};
+const FontDef Font_11x18 = {11,18,Font11x18};
+const FontDef Font_16x26 = {16,26,Font16x26};
